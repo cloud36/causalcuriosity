@@ -99,7 +99,7 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  **Chart from Paper**  
  
- !(https://github.com/cloud36/MMM/blob/master/img/adstock_functions.png)
+ ![adstock_functions](https://imgur.com/44omR43)
  
  **Transformed Timeseries**  
  
