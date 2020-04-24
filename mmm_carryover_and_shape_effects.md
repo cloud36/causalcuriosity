@@ -101,6 +101,11 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  ![adstock_functions](https://i.imgur.com/44omR43.png)
  
+Parameter Desctiption
+* alpha
+* theta
+* functional forms. 
+ 
 ### Transformed Timeseries with Geometric and Delayed Adstock functions 
  
  ![geometric](https://i.imgur.com/IHiELKx.png)
