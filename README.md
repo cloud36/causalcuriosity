@@ -1,0 +1,2 @@
+# christhinks
+Personal coding blog. 
