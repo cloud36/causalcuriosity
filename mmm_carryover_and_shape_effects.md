@@ -115,7 +115,15 @@ Parameter Desctiption
  
 ### Shape Effect / Diminishing Returns
 
-To model the shape effect of advertising, the media spend needs to be transformed through a curvature function. A candidate for such a curvature function is the Hill function, which has its origins in pharmacology (Gesztelyi et al., 2012; Hill, 1910), where it was used as an empirical receptor model
+Next, the paper moves onto modeling the phenomenon of diminishing returns, referred to as the shape effect in the paper. The Hill Function is used to model this, however other functions are possible and the paper cites the following: 
+
+**Other Functional Forms** 
+
+* Sigmoid function (also referred to as the logistic function),
+* or the integral of other probability distributions such as the normal distribution.
+* Another alternative is monotonic regression splines.
+
+Interestingly, the [Hill function](https://en.wikipedia.org/wiki/Hill_equation_(biochemistry)) has it's roots in biochemistry. 
 
 Parameters: bHill
 
@@ -138,11 +146,6 @@ Identifiability means that, given an arbitrarily large sample from the joint dis
 
 (Wikipedia) In statistics, identifiability is a property which a model must satisfy in order for precise inference to be possible. A model is identifiable if it is theoretically possible to learn the true values of this model's underlying parameters after obtaining an infinite number of observations from it. Mathematically, this is equivalent to saying that different values of the parameters must generate different probability distributions of the observable variables. Usually the model is identifiable only under certain technical restrictions, in which case the set of these requirements is called the identification conditions.
 
-Other Functional Forms
-
-* Sigmoid function (also referred to as the logistic function),
-* or the integral of other probability distributions such as the normal distribution.
-* Another alternative is monotonic regression splines.
 
 
 ```python
@@ -158,17 +161,18 @@ def beta_hill(x, S, K, beta):
 
 ### Combining: Carryover and Shape / Lag and Diminishing Returns
 
-Two possible approaches:
+There are wwo possible approaches to combining the shape and carryover affects. 
 
-We could first apply the adstock transformation to the time series of media spend, and then apply the shape transformation.
+1. Apply adstock first and then shape.
+2. Apply shape first and then adstock. 
 
-First apply shape transformation and then adstock.
+The paper recommends route 1 if there is small spend for any given time period. This makes sense as the shape affect is likely not to be activated by small spend. Alternatively, for large sustained spend it makes sense to first apply the shape (diminishing return) affect and then apply the adstock function. 
 
-If media spend in each time period is relatively small compared to the cumulative spend across multiple time periods, the shape effect in each time period is less obvious compared to that of cumulative media spend.
+### Model
 
-In this case, we would prefer to apply the shape transformation after the adstock transformation
-However, if the media spend is heavily concentrated in some single time periods with an on-and-off pattern, the latter choice might be preferable
+Final, we can specify the function form of our (the papers) MMM model: 
 
+Here:
 
 ### Simulation 
 
