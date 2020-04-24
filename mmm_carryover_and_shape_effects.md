@@ -4,13 +4,11 @@ permalink: /carryover_and_shape_effects/
 categories: mmm causality marketing
 ---
 
-# Partial Summary and Implementation of Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects 
+# Paper Review
+## Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects 
 
-Paper Authors: Yuxue Jin, Yueqing Wang, Yunting Sun, David Chan, Jim Koehler
-
-[Paper Link](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/46001.pdf)
-
-Notebook Link (to come)
+* Paper Authors: Yuxue Jin, Yueqing Wang, Yunting Sun, David Chan, Jim Koehler
+* [Paper Link](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/46001.pdf)
 
 ### Overview
 
@@ -101,7 +99,7 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  **Chart from Paper**  
  
- ![alt text](https://github.com/cloud36/MMM/blob/master/img/adstock_functions.png)
+ !(https://github.com/cloud36/MMM/blob/master/img/adstock_functions.png)
  
  **Transformed Timeseries**  
  
