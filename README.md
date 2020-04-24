@@ -17,5 +17,5 @@
 
 ### TBD
 
-## [About Me](/aboutme/)
+## [About Me](https://cloud36.github.io/christhinks/aboutme/)
 
