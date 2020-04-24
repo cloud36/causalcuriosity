@@ -18,17 +18,26 @@ This paper is mainly concerned with two common issues in MMM: lagged effects (ca
 
 ### Carryover Effect (Lagged Impact)
 
-Caryover affect (lag) is modeled with an adstock function. This is a weighted average going back L spots, where L varies with media channel.  We can use different functional forms for the weight function wm. A commonly used function is geometric decay additionally a delayed adstock function is also studied.
+Caryover affect, often called lagged effect, is modeled through what is called an adstock function. 
+
+* Adstock function was coined by Simon Broadbent and attempts to measure how an advertiser's media spend accumulates and decays overtime. 
+
+The paper models this two ways: 
 
 **Geometric Function**
-*  Effect is most pronouned on day of spend and diminishes in subsequent days.
+
+* This is basically a weighted average going back L days, where L can vary by media channel. 
+* Here the effect has the largest impact on the day of spend/impression and decays after. 
+* I imagine the more transactional a channel is the quicker the decay. Additionally, the lead time a consumer takes to make a purchase decision e.g. (buying a house takes months so the L is longer and decay is slower) impacts the function parameters. 
 
 **Delayed Adstock (radial kernel basis function)**  
+
 * The effect of media spend spikes several days after media spend.
+* I imagine this would be a better function to channels that are upper funnel i.e. brining the need and/or product to the consumers mind. 
 
 **Other Functions** 
 
-* Negative binomial density function used in Hanssens et al. (2003), can also achieve the purpose of modelling a delay in the peak effect
+* Negative binomial density function has also been used. 
 
 #### Code Implementation
 
@@ -92,11 +101,12 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  **Chart from Paper**  
  
- here
+ ![alt text](https://github.com/cloud36/MMM/blob/master/img/adstock_functions.png)
  
  **Transformed Timeseries**  
  
- here
+ ![alt text](https://github.com/cloud36/MMM/blob/master/img/transformed_adstock_geometric.png)
+ ![alt text](https://github.com/cloud36/MMM/blob/master/img/transformed_adstock_delayed.png)
  
  Commentary Here
  
