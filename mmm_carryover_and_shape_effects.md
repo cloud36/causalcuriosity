@@ -144,6 +144,18 @@ Other Functional Forms
 * or the integral of other probability distributions such as the normal distribution.
 * Another alternative is monotonic regression splines.
 
+
+```python
+def hill(x, S, K):
+    return (1/1+(x/K)**(-S))
+
+def beta_hill(x, S, K, beta):
+    return beta - (K**S*beta)/(x**S+K**S)
+```
+
+![hill transformations](https://i.imgur.com/v30CyLy.png)
+
+
 ### Combining: Carryover and Shape / Lag and Diminishing Returns
 
 Two possible approaches:
