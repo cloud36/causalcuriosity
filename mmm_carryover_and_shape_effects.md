@@ -97,14 +97,14 @@ def carryover(x, alpha, L, theta = None, func='geo'):
     return np.array(transformed_x)
  ```
  
- **Chart from Paper**  
+### Adstock Functions
  
  ![adstock_functions](https://i.imgur.com/44omR43.png)
  
- **Transformed Timeseries**  
+### Transformed Timeseries with Geometric and Delayed Adstock functions 
  
- ![alt text](https://github.com/cloud36/MMM/blob/master/img/transformed_adstock_geometric.png)
- ![alt text](https://github.com/cloud36/MMM/blob/master/img/transformed_adstock_delayed.png)
+ ![geometric](https://i.imgur.com/IHiELKx.png)
+ ![delayed](https://i.imgur.com/SckKLoj.png)
  
  Commentary Here
  
