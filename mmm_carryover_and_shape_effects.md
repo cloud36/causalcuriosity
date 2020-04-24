@@ -1,8 +1,7 @@
 ---
-layout: page
 title: "Carryover"
-categories: mmm causality marketing
 permalink: /carryover_and_shape_effects/
+categories: mmm causality marketing
 ---
 
 # First post 
