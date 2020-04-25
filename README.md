@@ -21,8 +21,11 @@
 * A Bayesian Solution to the M-Bias Problem
 
 ### Reinforcement Learning
-#### Concepts
+#### Concepts & Algorithms
 * Overview
+* [Deep Q-Learning (DQN) and Double DQN Implementation](https://github.com/cloud36/navigation_drlnd/blob/master/report.md)
+* [Deep Deterministic Policy Gradient Implementation](https://github.com/cloud36/continuous-control-rl/blob/master/report.md)
+* [Multi-Agent (MARL) implementation of DDPG](https://github.com/cloud36/marl-tennis-/blob/master/report.md)
 
 ### Economics 
 * Marshallian Demand Curve
