@@ -6,7 +6,7 @@
 
 #### Papers
 * [Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects](https://cloud36.github.io/christhinks/carryover_and_shape_effects/) 
-* Bias Correction For Paid Search In Media Mix Modeling
+* [Bias Correction For Paid Search In Media Mix Modeling](https://cloud36.github.io/christhinks/bias_correction_paid_search/)
 * Near Impressions for Observational Causal Ad Impact
 * Toward Improving Digital Attribution Model Accuracy
 
