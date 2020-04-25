@@ -8,3 +8,4 @@ categories: mmm causality
 
 ## Bias Correction For Paid Search In Media Mix Modeling
 ### Authors: 
+**[Paper](Paper URL: https://arxiv.org/pdf/1807.03292.pdf)** 
