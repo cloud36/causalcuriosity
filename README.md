@@ -30,6 +30,13 @@
 ### Economics 
 * Marshallian Demand Curve
 
+### General Algorithm Review / Implementation
+* The Basics
+* Machine Learning
+* Optimization
+* Bayesian 
+* Resources 
+
 ## Blog Posts
 * The importance of simulation in causality. 
 
