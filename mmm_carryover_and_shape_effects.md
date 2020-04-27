@@ -12,26 +12,26 @@ categories: mmm causality marketing
 
 ### Overview
 
-This paper is mainly concerned with two common issues in MMM: lagged effects (caryoer) and diminishing returns (shape effects). It offers a few functions to model this phenomenon as well as bayesian model specification. Finally, it provides a way to simulate data as a means to compare model results to the ground truth as well as a overview of how to calculate ROAS, mROAS and optimize future media spend.
+This paper is mainly concerned with two common issues in MMM: lagged effects (carryoer) and diminishing returns (shape effects). It offers a few functions to model this phenomenon as well as bayesian model specification. Additionally, it provides a way to simulate data as a means to compare model results to the ground truth. Finally, it provides an overview of how to calculate ROAS, mROAS and optimize future media spend.
 
 ### Carryover Effect (Lagged Impact)
 
 Caryover affect, often called lagged effect, is modeled through what is called an adstock function. 
 
-* Adstock function was coined by Simon Broadbent and attempts to measure how an advertiser's media spend accumulates and decays overtime. 
+* Adstock was coined by Simon Broadbent and attempts to measure how an advertiser's media spend accumulates and decays overtime. 
 
 The paper models this two ways: 
 
 **Geometric Function**
 
-* This is basically a weighted average going back L days, where L can vary by media channel. 
+* This is a weighted average going back L days, where L can vary by media channel. 
 * Here the effect has the largest impact on the day of spend/impression and decays after. 
-* I imagine the more transactional a channel is the quicker the decay. Additionally, the lead time a consumer takes to make a purchase decision e.g. (buying a house takes months so the L is longer and decay is slower) impacts the function parameters. 
+* I imagine the more transactional a channel is the quicker the decay. Additionally, the lead time a consumer takes to make a purchase decision e.g. (buying a house takes months so the L is longer and decay is slower) impacts the functions parameters. 
 
 **Delayed Adstock (radial kernel basis function)**  
 
 * The effect of media spend spikes several days after media spend.
-* I imagine this would be a better function to channels that are upper funnel i.e. brining the need and/or product to the consumers mind. 
+* I imagine this would be a better function to model channels that are upper funnel i.e. brining the need and/or product to the consumers mind. 
 
 **Other Functions** 
 
@@ -101,11 +101,17 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  ![adstock_functions](https://i.imgur.com/44omR43.png)
  
-Parameter Desctiption
-* alpha
-* theta
-* functional forms. 
+Functionl Form
+* Geometric
+    * alpha: decay parameter
+![geo](https://i.imgur.com/msLAT36.png)
+
+* Delayed
+    * alpha: decay parameter
+    * theta: delayed effect parameter
  
+![delayed](https://i.imgur.com/DydmaeB.png)
+
 ### Transformed Timeseries with Geometric and Delayed Adstock functions 
  
  ![geometric](https://i.imgur.com/IHiELKx.png)
