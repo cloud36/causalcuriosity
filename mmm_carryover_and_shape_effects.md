@@ -101,7 +101,8 @@ def carryover(x, alpha, L, theta = None, func='geo'):
  
  ![adstock_functions](https://i.imgur.com/44omR43.png)
  
-Functionl Form
+Functionl Forms
+
 * Geometric
     * alpha: decay parameter
 ![geo](https://i.imgur.com/msLAT36.png)
@@ -109,7 +110,6 @@ Functionl Form
 * Delayed
     * alpha: decay parameter
     * theta: delayed effect parameter
- 
 ![delayed](https://i.imgur.com/DydmaeB.png)
 
 ### Transformed Timeseries with Geometric and Delayed Adstock functions 
@@ -117,7 +117,7 @@ Functionl Form
  ![geometric](https://i.imgur.com/IHiELKx.png)
  ![delayed](https://i.imgur.com/SckKLoj.png)
  
- Commentary Here
+Above, we can see the actual and transformed media spend value for the geometric and delayed adstock functions. As expected, each looks like a moving average with the delayed adstock function show peaks a few days after large media spend spikes. 
  
 ### Shape Effect / Diminishing Returns
 
@@ -133,26 +133,25 @@ Interestingly, the [Hill function](https://en.wikipedia.org/wiki/Hill_equation_(
 
 Parameters: bHill
 
+![hill](https://i.imgur.com/00CijBt.png)
+
 * S = Slope ; greater than 0
 * K = Half Saturation Point ; greater than 0
 * beta = Coefficient for channel ; greater than 0
-* Hill = 1 / 1+ (spend / K)^-S
+* x = media spend 
 
-Notes: In original function, ass x goes to infinity the function approaches 1. Therefore a beta coefficient is introduced.
+The equation above is a modified version of the original. In the original Hill function as X approaches infinity the function approaches 1, therefore we multiple times a beta coefficient to account for various strengths of marketing channels. 
 
-However, we have noticed that the parameters of βHill are essentially unidentifiable in some scenarios
+The paper does point out that the function has poor identifiability. For example, when K (the half saturation) point is outside of the observed media spend. 
 
-Another scenario is when K is outside the range of observed media spend,(blue) In this case, the observed spend is assumed to be in the range (0, 1), and the two curves are nearly identical within that range, but diverge outside it.
+To account for poor identifiability and therefore difficulty estimating the paper referenced a similar function descibed by Jin, Shobowale, Koehler and Case (2012), shown below. 
 
-The poor identifiability of the βHill function makes it very challenging to estimate the parameters well with any statistical method. Alternatively, we could fit a more parsimonious functional form, such as the one in (6), referred to as reach transformation hereafter, which is equivalent to fixing S = 1 in estimating the Hill function.
+![grp](https://i.imgur.com/pp8h2qY.png)
 
-Definition. (Identifiability, Pearl 2013) The causal effect of X on Y is identifiable if the quantity Pr(y | xˇ) can be computed uniquely from any positive probability of the observed variables that is compatible with the diagram.
-
-Identifiability means that, given an arbitrarily large sample from the joint distribution described by the causal diagram, the causal effect Pr(y | xˇ) can be determined.
-
-(Wikipedia) In statistics, identifiability is a property which a model must satisfy in order for precise inference to be possible. A model is identifiable if it is theoretically possible to learn the true values of this model's underlying parameters after obtaining an infinite number of observations from it. Mathematically, this is equivalent to saying that different values of the parameters must generate different probability distributions of the observable variables. Usually the model is identifiable only under certain technical restrictions, in which case the set of these requirements is called the identification conditions.
-
-
+* R = Reach
+* G = Gross Rating Points / Impressions 
+* a = beta (channel strength)
+* b = K * beta
 
 ```python
 def hill(x, S, K):
@@ -167,7 +166,7 @@ def beta_hill(x, S, K, beta):
 
 ### Combining: Carryover and Shape / Lag and Diminishing Returns
 
-There are wwo possible approaches to combining the shape and carryover affects. 
+There are two possible approaches to combining the shape and carryover affects. 
 
 1. Apply adstock first and then shape.
 2. Apply shape first and then adstock. 
@@ -178,7 +177,9 @@ The paper recommends route 1 if there is small spend for any given time period. 
 
 Final, we can specify the function form of our (the papers) MMM model: 
 
-Here:
+![form](https://i.imgur.com/o0v8rxM.png)
+
+where Xt has been transformed through the Adstock function and Z represents the control variables. 
 
 ### Simulation 
 
