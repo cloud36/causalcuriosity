@@ -8,17 +8,17 @@ categories: causality machine_learning statistics
 
 ### Correlation != Causation
 
-But, why?
+We've all heard the old adage "correlation does not equal causation", but how do erroneous results from this axiom bubble up in real life? 
 
-I'd say there are three layers of why this isn't true:
+I'd say we see this in three layers with increasing opaqueness.
 
-1) Obvious rejections where two variables are highly correlated but one doesn't cause the other.  
-2) [Simpson's paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) This mistake is than much easier to make and set's the stage for why we'd need to the need for extreme care when looking at what seems to be obvious 
-3) When we are trying to take action in an environment and want to undertand the impact (causal effect) of that action. 
+1) Obvious instances where p-hacking results in spruious correlations i.e.  x is correlated with y, but clearly x is not causing y. Example: 
+2) [Simpson's paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) This mistake is much easier to make and often the correlation between x -> y can seem causal, however it is not. For example, admisssion rates for women ... they were applying to harder colleges. 
+3) Finally, there is the do(x) calculus, where we attempt to estimate the value of y if we do(x). Here we must understand all confounding variables and have a solid theory of how to estimate the causal effect.
 
 ### Frameworks
 
-Two major, and complimentory, frameworks for studying causality have emerged over several decades. The Rubin Causal Framework and Pearl's causal graph framework. In a nutshell, the Rubin method treats causality as a missing data problem i.e. estaimting the counterfactual. 
+Two major, and complimentory, frameworks for studying causality have emerged over the decades. The Rubin Causal Framework and Pearl's causal graph framework. In a nutshell, the Rubin method treats causality as a missing data problem i.e. estaimting the counterfactual. 
 
 In my mind, the Pearlian graph methods are more about encoding domain knowledge as a way to verify Y is independent of X given the data. 
 
