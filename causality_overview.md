@@ -18,7 +18,7 @@ I'd say we see this in three layers with increasing opaqueness.
 
 ### Frameworks
 
-Two major, and complimentory, frameworks for studying causality have emerged over the decades. The Rubin Causal Framework and Pearl's causal graph framework. In a nutshell, the Rubin method treats causality as a missing data problem i.e. estaimting the counterfactual. 
+Two major, and complimentary, frameworks for studying causality have emerged over the decades. The Rubin Causal Framework and Pearl's causal graph framework. In a nutshell, the Rubin method treats causality as a missing data problem i.e. estimating the counterfactual. 
 
 In my mind, the Pearlian graph methods are more about encoding domain knowledge as a way to verify Y is independent of X given the data. 
 
