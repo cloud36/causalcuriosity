@@ -258,10 +258,10 @@ Now that the dataset has been simulated it is time to fit the model. The paper u
 
 #### Results
 
-In-Sample Prediction
+![In-Sample Prediction](https://i.imgur.com/IzkCkEY.png)
 
-MAPE
-MAE
+MAPE: 0.12077888870506055 
+MAE: 0.02536652374098151 
 
 I expect this the in-sample fit to be pretty good. 1) becuase it's in-sample and 2) because we generated the data with the same functional form we are modeling. So, it boils down to how well the MCMC approimation works. 
 
