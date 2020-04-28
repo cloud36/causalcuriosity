@@ -1,8 +1,6 @@
 ## Paper / Concept Implementations by Subject Area
 
 ### Media Mix Modeling / Multi-Touch Attribution
-#### Concepts
-* MMM / MTA Overview
 
 #### Papers
 * [Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects](https://cloud36.github.io/christhinks/carryover_and_shape_effects/) 
