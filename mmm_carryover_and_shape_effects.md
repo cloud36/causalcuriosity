@@ -140,9 +140,16 @@ Parameters: bHill
 * beta = Coefficient for channel ; greater than 0
 * x = media spend 
 
+```python
+def beta_hill(x, S, K, beta):
+    return beta - (K**S*beta)/(x**S+K**S)
+```
+
 The equation above is a modified version of the original. In the original Hill function as X approaches infinity the function approaches 1, therefore we multiple times a beta coefficient to account for various strengths of marketing channels. 
 
-The paper does point out that the function has poor identifiability. For example, when K (the half saturation) point is outside of the observed media spend. 
+The paper does point out that the function has poor identifiability. For example, when K (the half saturation) point is outside of the observed media spend. We can see this in the image below. If we examine the blue line, we see that we don't observe the half-satuation point i.e. the blue line hasn't started to flatten due to diminishing returns, therefore it is impossible for our model to pick this up. 
+
+![hill transformations](https://i.imgur.com/v30CyLy.png)
 
 To account for poor identifiability and therefore difficulty estimating the paper referenced a similar function descibed by Jin, Shobowale, Koehler and Case (2012), shown below. 
 
@@ -152,16 +159,6 @@ To account for poor identifiability and therefore difficulty estimating the pape
 * G = Gross Rating Points / Impressions 
 * a = beta (channel strength)
 * b = K * beta
-
-```python
-def hill(x, S, K):
-    return (1/1+(x/K)**(-S))
-
-def beta_hill(x, S, K, beta):
-    return beta - (K**S*beta)/(x**S+K**S)
-```
-
-![hill transformations](https://i.imgur.com/v30CyLy.png)
 
 
 ### Combining: Carryover and Shape / Lag and Diminishing Returns
@@ -217,5 +214,75 @@ arparams = np.array([.7, .6])
 maparams = np.array([.1, .02])
 ar = np.r_[1, arparams] # add zero-lag and negate
 ma = np.r_[1, maparams] 
+
+alpha_media_1 = .6
+theta_media_1 = 5
+k_media_1     = .2
+s_media_1     = 1
+beta_media_1  = .8
+
+alpha_media_2 = .8
+theta_media_2 = 3
+k_media_2     = .2
+s_media_2     = 2
+beta_media_2  = .6
+ 
+alpha_media_3 = .8
+theta_media_3 = 4
+k_media_3     = .2
+s_media_3     = 2
+beta_media_3  = .3
+
+L=13
+ru=4
+lamb = -.5
+ep = .05**2
+
+m1 = [beta_hill(x, s_media_1, k_media_1, beta_media_1) for x in carryover(media_1, alpha_media_1, L, theta = theta_media_1, func='delayed')]
+m2 = [beta_hill(x, s_media_2, k_media_2, beta_media_2) for x in carryover(media_2, alpha_media_2, L, theta = theta_media_2, func='delayed')]
+m3 = [beta_hill(x, s_media_3, k_media_3, beta_media_3) for x in carryover(media_3, alpha_media_3, L, theta = theta_media_3, func='delayed')]
+ 
+y = np.repeat(ru, N) + m1 + m2 + m3 + (lamb*price_variable) + np.random.normal(0, ep, N)
 ```
+
+![media](https://i.imgur.com/pd0BU7M.png)
+
+![price](https://i.imgur.com/8eGRAzj.png)
+
+![sales](https://i.imgur.com/eL3sVhU.png)
+
+
+### Fitting the Model.
+
+Now that the dataset has been simulated it is time to fit the model. The paper uses STAN, however I still with Python and use PyMC3.
+
+#### Results
+
+In-Sample Prediction
+
+MAPE
+MAE
+
+I expect this the in-sample fit to be pretty good. 1) becuase it's in-sample and 2) because we generated the data with the same functional form we are modeling. So, it boils down to how well the MCMC approimation works. 
+
+### True Parameters versus Approximated Parameters. 
+
+### ROAS / mROAS Calculation
+
+### Optimizing the Marketing Budget
+
+### Summary
+
+In this review, we looked at how the paper models:
+
+1) Shape.
+2) Carryover.
+3) Combining Shape/Carryover.
+4) Full Form of MMM Model.
+5) Simulated data and comparing to ground truth. 
+6) Calculating ROAS / mROAS.
+7) Optimizaing marketing budget. 
+
+The paper goes on to discuss a few more interesting points 8) effect of priors 9) effect of sample size 10) application to real dataset. 
+
 
