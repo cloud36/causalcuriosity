@@ -11,8 +11,6 @@
 ### Causality
 #### Concepts
 * [Casualty Methods Overview](https://cloud36.github.io/christhinks/causality_overview/)
-* Rubin Methods
-* Pearl Methods
 * Machine Learning Advances
 
 #### Papers
@@ -27,13 +25,6 @@
 
 ### Economics 
 * Marshallian Demand Curve
-
-### General Algorithm Review / Implementation
-* The Basics
-* Machine Learning
-* Optimization
-* Bayesian 
-* Resources 
 
 ## Blog Posts
 * The importance of simulation in causality. 
