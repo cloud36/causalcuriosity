@@ -260,16 +260,89 @@ Now that the dataset has been simulated it is time to fit the model. The paper u
 
 ![In-Sample Prediction](https://i.imgur.com/IzkCkEY.png)
 
-MAPE: 0.12077888870506055 
-MAE: 0.02536652374098151 
+* MAPE: 0.12
+* MAE:  0.026 
 
 I expect this the in-sample fit to be pretty good. 1) becuase it's in-sample and 2) because we generated the data with the same functional form we are modeling. So, it boils down to how well the MCMC approimation works. 
 
 ### True Parameters versus Approximated Parameters. 
 
+Below, we can see the posterior distribution of model parameters versus the true model parameter (blue line). 
+
+![k](https://i.imgur.com/i02JOzb.png)
+![beta](https://i.imgur.com/p2vRz8t.png)
+![slope](https://i.imgur.com/Oq4P7o4.png
+![alpha](https://i.imgur.com/5cEp0nO.png)
+![theta](https://i.imgur.com/vWP1K8B.png)
+![intercept](https://i.imgur.com/UjSvcYt.png)
+
 ### ROAS / mROAS Calculation
 
+Next, we can calculate ROAS and mROAS with the following equations.
+
+![ROAS](https://i.imgur.com/ZGnBCPn.png)
+![mROAS](https://i.imgur.com/fKlOCAb.png)
+
+Basically what this boils down to is a predicted sales with all media channels minus predicted sales with all but the Mth media channel dived by spend. The only catch is that we have to factor in the post-period effect. So, instead of just calculating for the change period we have to include the post period as well. 
+
+![p6](https://i.imgur.com/xs3gH3W.png)
+
+```
+# simulate ROAS 
+
+media_1_roas = []
+media_2_roas = []
+media_3_roas = []
+
+
+burnin=500
+for i in range(1000):
+    burnin=5
+    s = np.random.randint(1,1000-burnin)
+    intercept = t['intercept'][s]
+    
+    s_sample1, s_sample2, s_sample3 = t['s'][:,0][burnin:][s],     t['s'][:,1][burnin:][s],  t['s'][:,2][burnin:][s]
+    k_sample1, k_sample2, k_sample3 = t['k'][:,0][burnin:][s],     t['k'][:,1][burnin:][s],  t['k'][:,2][burnin:][s]
+    b_sample1, b_sample2, b_sample3 = t['beta'][:,0][burnin:][s],  t['beta'][:,1][burnin:][s],  t['beta'][:,2][burnin:][s]
+   
+    a_sample1, a_sample2, a_sample3 = t['alpha'][:,0][burnin:][s], t['alpha'][:,1][burnin:][s],  t['alpha'][:,2][burnin:][s]
+    t_sample1, t_sample2, t_sample3 = t['theta'][:,0][burnin:][s], t['theta'][:,1][burnin:][s],  t['theta'][:,2][burnin:][s]
+   
+    fitted_m1 = [beta_hill(x, s_sample1, k_sample1, b_sample1) for x in carryover(media_1, a_sample1, L, theta = t_sample1, func='delayed')]
+    fitted_m2 = [beta_hill(x, s_sample2, k_sample2, b_sample2) for x in carryover(media_2, a_sample2, L, theta = t_sample2, func='delayed')]
+    fitted_m3 = [beta_hill(x, s_sample3, k_sample3, b_sample3) for x in carryover(media_3, a_sample3, L, theta = t_sample3, func='delayed')]
+ 
+    y_hat    = intercept + fitted_m1 + fitted_m2 + fitted_m3 + t['lamb'][burnin:][s] * price_variable
+     
+    y_hat_m1 = intercept + fitted_m2 + fitted_m3 + t['lamb'][burnin:][s] * price_variable
+    y_hat_m2 = intercept + fitted_m1 + fitted_m3 + t['lamb'][burnin:][s] * price_variable
+    y_hat_m3 = intercept + fitted_m1 + fitted_m2 + t['lamb'][burnin:][s] * price_variable
+
+    media_1_roas.append(sum(y_hat[L:]-y_hat_m1[L:]) / media_1[L:len(media_1)-L].sum())
+    media_2_roas.append(sum(y_hat[L:]-y_hat_m2[L:]) / media_2[L:len(media_1)-L].sum())
+    media_3_roas.append(sum(y_hat[L:]-y_hat_m3[L:]) / media_3[L:len(media_1)-L].sum())
+```
+
 ### Optimizing the Marketing Budget
+
+Finally, we move onto optimizing a budget. To do this we take the modeled ROAS numbers and translate this into a contrained optimization problem. 
+
+![optimal_mix](https://i.imgur.com/ol4BiD1.png)
+
+CODE 
+
+Notice how in the code above I used the median as a numerical summary for the posterior. If we wanted to be a bit more bayesian, we could maximize the average return across the entire poterior distribution.
+
+### Online Optimization
+
+(coming soon)
+Finally, and outside of the paper, I want to explore what an online optimization looks like. In this scneario we 1) generate two years of historical data 2) generate the price variable for the next year and break into quarters 3) fit the model with the two years of historical data 4) set media spend allocations each quarter and then re-run the model. 
+
+Questions that will arise from this study:
+
+1) How much regret sum(true potential - realized potential) we have.
+2) Do we improve each quarter? 
+3) Can / how likely are we to get stuck in a local optimum. 
 
 ### Summary
 
@@ -282,6 +355,7 @@ In this review, we looked at how the paper models:
 5) Simulated data and comparing to ground truth. 
 6) Calculating ROAS / mROAS.
 7) Optimizaing marketing budget. 
+8) Extra: Online Optimization
 
 The paper goes on to discuss a few more interesting points 8) effect of priors 9) effect of sample size 10) application to real dataset. 
 
