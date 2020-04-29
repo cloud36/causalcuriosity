@@ -3,14 +3,14 @@
 ### Media Mix Modeling / Multi-Touch Attribution
 
 #### Papers
-* [Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects](https://cloud36.github.io/christhinks/carryover_and_shape_effects/) 
-* [Bias Correction For Paid Search In Media Mix Modeling](https://cloud36.github.io/christhinks/bias_correction_paid_search/)
+* [Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects](https://cloud36.github.io/causalcuriosity/carryover_and_shape_effects/) 
+* [Bias Correction For Paid Search In Media Mix Modeling](https://cloud36.github.io/causalcuriosity/bias_correction_paid_search/)
 * Near Impressions for Observational Causal Ad Impact
 * Toward Improving Digital Attribution Model Accuracy
 
 ### Causality
 #### Concepts
-* [Casualty Methods Overview](https://cloud36.github.io/christhinks/causality_overview/)
+* [Casualty Methods Overview](https://cloud36.github.io/causalcuriosity/causality_overview/)
 * Machine Learning Advances
 
 #### Papers
@@ -29,5 +29,5 @@
 ## Blog Posts
 * The importance of simulation in causality. 
 
-## [About Me](https://cloud36.github.io/christhinks/aboutme/)
+## [About Me](https://cloud36.github.io/causalcuriosity/aboutme/)
 
