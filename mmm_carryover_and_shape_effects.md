@@ -271,7 +271,7 @@ Below, we can see the posterior distribution of model parameters versus the true
 
 ![k](https://i.imgur.com/i02JOzb.png)
 ![beta](https://i.imgur.com/p2vRz8t.png)
-![slope](https://i.imgur.com/Oq4P7o4.png
+![slope](https://i.imgur.com/Oq4P7o4.png)
 ![alpha](https://i.imgur.com/5cEp0nO.png)
 ![theta](https://i.imgur.com/vWP1K8B.png)
 ![intercept](https://i.imgur.com/UjSvcYt.png)
@@ -340,22 +340,22 @@ Finally, and outside of the paper, I want to explore what an online optimization
 
 Questions that will arise from this study:
 
-1) How much regret sum(true potential - realized potential) we have.
-2) Do we improve each quarter? 
-3) Can / how likely are we to get stuck in a local optimum. 
+1. How much regret sum(true potential - realized potential) we have.
+2. Do we improve each quarter? 
+3. Can / how likely are we to get stuck in a local optimum. 
 
 ### Summary
 
 In this review, we looked at how the paper models:
 
-1) Shape.
-2) Carryover.
-3) Combining Shape/Carryover.
-4) Full Form of MMM Model.
-5) Simulated data and comparing to ground truth. 
-6) Calculating ROAS / mROAS.
-7) Optimizaing marketing budget. 
-8) Extra: Online Optimization
+1. Shape.
+2. Carryover.
+3. Combining Shape/Carryover.
+4. Full Form of MMM Model.
+5. Simulated data and comparing to ground truth. 
+6. Calculating ROAS / mROAS.
+7. Optimizaing marketing budget. 
+8. Extra: Online Optimization
 
 The paper goes on to discuss a few more interesting points 8) effect of priors 9) effect of sample size 10) application to real dataset. 
 
