@@ -12,13 +12,13 @@ categories: mmm causality marketing
 
 ### Overview
 
-This paper is mainly concerned with two common issues in MMM: lagged effects (carryoer) and diminishing returns (shape effects). It offers a few functions to model this phenomenon as well as bayesian model specification. Additionally, it provides a way to simulate data as a means to compare model results to the ground truth. Finally, it provides an overview of how to calculate ROAS, mROAS and optimize future media spend.
+This paper is concerned with two common issues in media mix modeling (MMM): lagged effects (carryover) and diminishing returns (shape effects). It offers a few functions to model this phenomenon as well as a bayesian model specification. Additionally, it provides a way to simulate data as a means to compare model results to the ground truth. Finally, it provides an overview of how to calculate ROAS, mROAS and optimize future media spend.
 
 ### Carryover Effect (Lagged Impact)
 
-Caryover affect, often called lagged effect, is modeled through what is called an adstock function. 
+Carryover effect, often called lagged effect, is modeled through what is called an adstock function. 
 
-* Adstock was coined by Simon Broadbent and attempts to measure how an advertiser's media spend accumulates and decays overtime. 
+* Adstock was [coined by Simon Broadbent](https://en.wikipedia.org/wiki/Advertising_adstock) and attempts to measure how an advertiser's media spend accumulates and decays overtime. 
 
 The paper models this two ways: 
 
@@ -31,7 +31,7 @@ The paper models this two ways:
 **Delayed Adstock (radial kernel basis function)**  
 
 * The effect of media spend spikes several days after media spend.
-* I imagine this would be a better function to model channels that are upper funnel i.e. brining the need and/or product to the consumers mind. 
+* I imagine this would be a better function to model channels that are upper funnel i.e. bringing the need and/or product to the consumers mind. 
 
 **Other Functions** 
 
@@ -117,7 +117,7 @@ Functionl Forms
  ![geometric](https://i.imgur.com/IHiELKx.png)
  ![delayed](https://i.imgur.com/SckKLoj.png)
  
-Above, we can see the actual and transformed media spend value for the geometric and delayed adstock functions. As expected, each looks like a moving average with the delayed adstock function show peaks a few days after large media spend spikes. 
+Above, we can see the actual and transformed media spend value for the geometric and delayed adstock functions. As expected, each looks like a moving average with the delayed adstock function showing peaks a few days after large media spend spikes. 
  
 ### Shape Effect / Diminishing Returns
 
@@ -129,7 +129,7 @@ Next, the paper moves onto modeling the phenomenon of diminishing returns, refer
 * or the integral of other probability distributions such as the normal distribution.
 * Another alternative is monotonic regression splines.
 
-Interestingly, the [Hill function](https://en.wikipedia.org/wiki/Hill_equation_(biochemistry)) has it's roots in biochemistry. 
+Interestingly, the [Hill function](https://en.wikipedia.org/wiki/Hill_equation_(biochemistry)) has its roots in biochemistry. 
 
 Parameters: bHill
 
@@ -145,13 +145,15 @@ def beta_hill(x, S, K, beta):
     return beta - (K**S*beta)/(x**S+K**S)
 ```
 
-The equation above is a modified version of the original. In the original Hill function as X approaches infinity the function approaches 1, therefore we multiple times a beta coefficient to account for various strengths of marketing channels. 
+The equation above is a modified version of the original. In the original Hill function, as X approaches infinity the function approaches 1, therefore we multiply by a beta coefficient to account for various strengths of marketing channels. 
 
-The paper does point out that the function has poor identifiability. For example, when K (the half saturation) point is outside of the observed media spend. We can see this in the image below. If we examine the blue line, we see that we don't observe the half-satuation point i.e. the blue line hasn't started to flatten due to diminishing returns, therefore it is impossible for our model to pick this up. 
+The paper does point out that the function has poor identifiability. For example, when K (the half saturation) point is outside of the observed media spend. 
+* We can see this in the image below. If we examine the blue line, we see that we don't observe the half-saturation point i.e. the blue line hasn't started to flatten due to diminishing returns, therefore it is impossible for our model to pick this up. 
+
 
 ![hill transformations](https://i.imgur.com/v30CyLy.png)
 
-To account for poor identifiability and therefore difficulty estimating the paper referenced a similar function descibed by Jin, Shobowale, Koehler and Case (2012), shown below. 
+To account for poor identifiability and therefore difficulty estimating the paper referenced a similar function described by Jin, Shobowale, Koehler and Case (2012), shown below. 
 
 ![grp](https://i.imgur.com/pp8h2qY.png)
 
@@ -160,15 +162,14 @@ To account for poor identifiability and therefore difficulty estimating the pape
 * a = beta (channel strength)
 * b = K * beta
 
-
 ### Combining: Carryover and Shape / Lag and Diminishing Returns
 
-There are two possible approaches to combining the shape and carryover affects. 
+There are two possible approaches to combining the shape and carryover effects. 
 
 1. Apply adstock first and then shape.
 2. Apply shape first and then adstock. 
 
-The paper recommends route 1 if there is small spend for any given time period. This makes sense as the shape affect is likely not to be activated by small spend. Alternatively, for large sustained spend it makes sense to first apply the shape (diminishing return) affect and then apply the adstock function. 
+The paper recommends route 1 if there is small spend for any given time period. This makes sense as the shape affect is likely not to be activated by small spend. Alternatively, for large sustained spend it makes sense to first apply the shape (diminishing return) effect and then apply the adstock function. 
 
 ### Model
 
@@ -180,14 +181,14 @@ where Xt has been transformed through the Adstock function and Z represents the 
 
 ### Simulation 
 
-Next we move onto simulation. Simulation is always important when when looking to extract causality from observational studies. This way we know the ground truth and how far off our models predictions are.
+Next we move onto simulation. Simulation is always important when looking to extract causality from observational studies. This way we know the ground truth and how far off our models predictions are.
 
 **Simulated Dataset** 
 
 * Two Years of Sales Data
 * Three Marketing Channels 
     * Media variables are generated by adding white noise to a sinusoidal seasonality with one year as a period;
-    * Scaled between 0 and 1 for convinence. 
+    * Scaled between 0 and 1 for convenience. 
 * One Control Variable (Price)
     * Price is generated via an AR(1) series. 
 
@@ -254,7 +255,7 @@ y = np.repeat(ru, N) + m1 + m2 + m3 + (lamb*price_variable) + np.random.normal(0
 
 ### Fitting the Model.
 
-Now that the dataset has been simulated it is time to fit the model. The paper uses STAN, however I still with Python and use PyMC3.
+Now that the dataset has been simulated it is time to fit the model. The paper uses STAN, however I use Python/PyMC3.
 
 #### Results
 
@@ -263,7 +264,7 @@ Now that the dataset has been simulated it is time to fit the model. The paper u
 * MAPE: 0.12
 * MAE:  0.026 
 
-I expect this the in-sample fit to be pretty good. 1) becuase it's in-sample and 2) because we generated the data with the same functional form we are modeling. So, it boils down to how well the MCMC approimation works. 
+I expect this in-sample fit to be pretty good. 1) becuase it's in-sample and 2) because we generated the data with the same functional form we are modeling. So, it boils down to how well the MCMC approximation works. 
 
 ### True Parameters versus Approximated Parameters. 
 
@@ -283,7 +284,7 @@ Next, we can calculate ROAS and mROAS with the following equations.
 ![ROAS](https://i.imgur.com/ZGnBCPn.png)
 ![mROAS](https://i.imgur.com/fKlOCAb.png)
 
-Basically what this boils down to is a predicted sales with all media channels minus predicted sales with all but the Mth media channel dived by spend. The only catch is that we have to factor in the post-period effect. So, instead of just calculating for the change period we have to include the post period as well. 
+Basically what this boils down to is a predicted sales with all media channels minus predicted sales with all but the Mth media channel divided by spend. The only catch is that we have to factor in the post-period effect. So, instead of just calculating for the change period we have to include the post period as well. 
 
 ![p6](https://i.imgur.com/xs3gH3W.png)
 
@@ -325,24 +326,13 @@ for i in range(1000):
 
 ### Optimizing the Marketing Budget
 
-Finally, we move onto optimizing a budget. To do this we take the modeled ROAS numbers and translate this into a contrained optimization problem. 
+Finally, we move onto optimizing a budget. To do this we take the modeled ROAS numbers and translate this into a constrained optimization problem. 
 
 ![optimal_mix](https://i.imgur.com/ol4BiD1.png)
 
 CODE 
 
-Notice how in the code above I used the median as a numerical summary for the posterior. If we wanted to be a bit more bayesian, we could maximize the average return across the entire poterior distribution.
-
-### Online Optimization
-
-(coming soon)
-Finally, and outside of the paper, I want to explore what an online optimization looks like. In this scneario we 1) generate two years of historical data 2) generate the price variable for the next year and break into quarters 3) fit the model with the two years of historical data 4) set media spend allocations each quarter and then re-run the model. 
-
-Questions that will arise from this study:
-
-1. How much regret sum(true potential - realized potential) we have.
-2. Do we improve each quarter? 
-3. Can / how likely are we to get stuck in a local optimum. 
+Notice how in the code above I used the median as a numerical summary for the posterior. If we wanted to be a bit more bayesian, we could maximize the average return across the entire posterior distribution.
 
 ### Summary
 
@@ -352,10 +342,9 @@ In this review, we looked at how the paper models:
 2. Carryover.
 3. Combining Shape/Carryover.
 4. Full Form of MMM Model.
-5. Simulated data and comparing to ground truth. 
+5. Simulated data and compared to ground truth. 
 6. Calculating ROAS / mROAS.
-7. Optimizaing marketing budget. 
-8. Extra: Online Optimization
+7. Optimizing marketing budget. 
 
 The paper goes on to discuss a few more interesting points 8) effect of priors 9) effect of sample size 10) application to real dataset. 
 
