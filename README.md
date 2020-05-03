@@ -11,10 +11,7 @@
 ### Causality
 #### Concepts
 * [Casualty Methods Overview](https://cloud36.github.io/causalcuriosity/causality_overview/)
-* Machine Learning Advances
 
-#### Papers
-* A Bayesian Solution to the M-Bias Problem
 
 ### Reinforcement Learning
 #### Concepts & Algorithms
@@ -23,8 +20,6 @@
 * [Deep Deterministic Policy Gradient Implementation](https://github.com/cloud36/continuous-control-rl/blob/master/report.md)
 * [Multi-Agent (MARL) implementation of DDPG](https://github.com/cloud36/marl-tennis-/blob/master/report.md)
 
-### Economics 
-* Marshallian Demand Curve
 
 ## Blog Posts
 * The importance of simulation in causality. 
