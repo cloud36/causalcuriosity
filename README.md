@@ -1,5 +1,5 @@
 
-### Papers
+### Paper Review by Subject
 **Media Mix Modeling / Multi-Touch Attribution**  
 * [Bayesian Methods for Media Mix Modeling with Carryover and Shape Effects](https://cloud36.github.io/causalcuriosity/carryover_and_shape_effects/) 
 * [Bias Correction For Paid Search In Media Mix Modeling](https://cloud36.github.io/causalcuriosity/bias_correction_paid_search/)
