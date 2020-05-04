@@ -7,10 +7,10 @@
 * Toward Improving Digital Attribution Model Accuracy
 
 ### Concepts
-#### Causality
+**Causality** 
 * [Casualty Methods Overview](https://cloud36.github.io/causalcuriosity/causality_overview/)
 
-#### Reinforcement Learning
+**Reinforcement Learning** 
 ##### Concepts & Algorithms
 * [Overview](https://cloud36.github.io/christhinks/rl_overview/)
 * [Deep Q-Learning (DQN) and Double DQN Implementation](https://github.com/cloud36/navigation_drlnd/blob/master/report.md)
