@@ -49,9 +49,9 @@ Two major, and complimentary, frameworks for studying causality have emerged ove
 
 
 ### Concepts
-**Ignorability:** This means that any missing data is independent of the observed data. I imagine the condition of ignorability is only met if the treatment assignment is random. 
+* **Ignorability:** This means that any missing data is independent of the observed data. I imagine the condition of ignorability is only met if the treatment assignment is random. 
 
-**Identifiability:** is a property which a model must satisfy in order for precise inference to be possible.[](https://en.wikipedia.org/wiki/Identifiability).
+* **Identifiability:** is a property which a model must satisfy in order for precise inference to be possible.[](https://en.wikipedia.org/wiki/Identifiability).
 
 **Covariate Imbalance:** This refers to an issue that arrises when the treatment assignment is non-random, therefore there is a covariate imbalance between the treated and untreated. 
 
