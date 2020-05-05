@@ -33,11 +33,15 @@ Two major, and complimentary, frameworks for studying causality have emerged ove
 **Inverse Propensity Scoring**
 * This takes the idea of propesnity scoring a bit further. It aims to correct for imbalance between the treated and untreated groups. For example, subjects with the same propensity score likely have the same treatment, so when we see a subject who has the "counterfactual" treatment we weight their outcome higher as to create a pseudo-population. 
 
-* Doubly Robust Propensity Scoring
-* Counterfactual Risk Minimization
-* Instrument Variables
-* Latent Instrument Variables
+**Doubly Robust Propensity Scoring** 
+* Here we combine a regression estimate with confounding variables and inverse propensity scoring. This results in a propensity-weighted regression. 
+
+**Instrument Variables** 
+* Instrument variables are usefule when we observe a variable X, but an unobserved variable is correlated with both X and the error term. The goal is to find a variable that is correlated with X but not the error term. This allows us to correct for the bias in the coeffecient in X. 
+
 * Mediation
+
+**Machine Learning Advances**
 * Double Machine Learning
 * Orthongonal Random Forests
 * TARnet
@@ -45,13 +49,13 @@ Two major, and complimentary, frameworks for studying causality have emerged ove
 
 
 ### Concepts
-* Ignorability
-* Identifiability
-* Covariate Imbalance 
-* Back-door criteria
-* Front-door adjustment
-* ATE: This stands for average treatment effect, it is what A/B tests measure. 
-* ITE / CATE: This stands for individual treatment effect or conditional treatment effect and looks to measure the treatment effect at the individual level. The average of all ITE within a population is the ATE. 
+**Ignorability:** This means that any missing data is independent of the observed data. I imagine the condition of ignorability is only met if the treatment assignment is random. 
+**Identifiability:** is a property which a model must satisfy in order for precise inference to be possible.[](https://en.wikipedia.org/wiki/Identifiability).
+**Covariate Imbalance:** This refers to an issue that arrises when the treatment assignment is non-random, therefore there is a covariate imbalance between the treated and untreated. 
+**Back-door criteria:** Given a causal graph and variabls Z, the back-door criteria is meat if Z blocks every path from X->Y and Z is not a descendant of X. 
+**Front-door adjustment** 
+**ATE:** This stands for average treatment effect, it is what A/B tests measure. 
+**ITE / CATE:** This stands for individual treatment effect or conditional treatment effect and looks to measure the treatment effect at the individual level. The average of all ITE within a population is the ATE. 
 
 ### Additional Resources
 
