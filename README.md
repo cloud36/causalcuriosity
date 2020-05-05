@@ -7,7 +7,7 @@
 * Toward Improving Digital Attribution Model Accuracy
 
 ## Concepts
-**[Causality](https://cloud36.github.io/causalcuriosity/causality_overview/)** 
+**[Causality](https://cloud36.github.io/causalcuriosity/causality_overview/)**  
 **[Reinforcement Learning](https://cloud36.github.io/christhinks/rl_overview/)** 
 
 **Algorithms** 
