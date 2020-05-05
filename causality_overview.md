@@ -66,5 +66,5 @@ Two major, and complimentary, frameworks for studying causality have emerged ove
 
 ### Additional Resources
 * [Causality](http://bayes.cs.ucla.edu/BOOK-2K/)
-* [https://mitpress.mit.edu/books/elements-causal-inference](https://mitpress.mit.edu/books/elements-causal-inference)
+* [Elements of Causal Inference](https://mitpress.mit.edu/books/elements-causal-inference)
 * [Counterfactual Machine Learning](http://www.cs.cornell.edu/courses/cs7792/2016fa/)
