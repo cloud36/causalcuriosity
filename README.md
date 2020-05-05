@@ -10,7 +10,7 @@
 * [Causality](https://cloud36.github.io/causalcuriosity/causality_overview/)
 * [Reinforcement Learning](https://cloud36.github.io/christhinks/rl_overview/) 
 
-**Algorithms** 
+## Algorithms
 * [Deep Q-Learning (DQN) and Double DQN Implementation](https://github.com/cloud36/navigation_drlnd/blob/master/report.md)
 * [Deep Deterministic Policy Gradient Implementation](https://github.com/cloud36/continuous-control-rl/blob/master/report.md)
 * [Multi-Agent (MARL) implementation of DDPG](https://github.com/cloud36/marl-tennis-/blob/master/report.md)
