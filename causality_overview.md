@@ -53,19 +53,18 @@ Two major, and complimentary, frameworks for studying causality have emerged ove
 
 * **Identifiability:** is a property which a model must satisfy in order for precise inference to be possible.[](https://en.wikipedia.org/wiki/Identifiability).
 
-**Covariate Imbalance:** This refers to an issue that arrises when the treatment assignment is non-random, therefore there is a covariate imbalance between the treated and untreated. 
+* **Covariate Imbalance:** This refers to an issue that arrises when the treatment assignment is non-random, therefore there is a covariate imbalance between the treated and untreated. 
 
-**Back-door criteria:** Given a causal graph and variabls Z, the back-door criteria is meat if Z blocks every path from X->Y and Z is not a descendant of X. 
+* **Back-door criteria:** Given a causal graph and variabls Z, the back-door criteria is meat if Z blocks every path from X->Y and Z is not a descendant of X. 
 
-**Front-door adjustment** 
+* **Front-door adjustment** 
 
-**ATE:** This stands for average treatment effect, it is what A/B tests measure. 
+* **ATE:** This stands for average treatment effect, it is what A/B tests measure. 
 
-**ITE / CATE:** This stands for individual treatment effect or conditional treatment effect and looks to measure the treatment effect at the individual level. The average of all ITE within a population is the ATE. 
+* **ITE / CATE:** This stands for individual treatment effect or conditional treatment effect and looks to measure the treatment effect at the individual level. The average of all ITE within a population is the ATE. 
 
 
 ### Additional Resources
-
-#### Blogs
-#### Books 
-#### Code 
+* [Causality](http://bayes.cs.ucla.edu/BOOK-2K/)
+* [https://mitpress.mit.edu/books/elements-causal-inference](https://mitpress.mit.edu/books/elements-causal-inference)
+* [Counterfactual Machine Learning](http://www.cs.cornell.edu/courses/cs7792/2016fa/)
