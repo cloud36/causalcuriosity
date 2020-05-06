@@ -42,7 +42,7 @@ back-door criterion relative to an ordered pair of variables (X, Y ) in the diag
 
 Below, we look at an example:
 
-![endo](https://i.imgur.com/vbq36FX.png)
+![endo](https://i.imgur.com/6TvRq0P.png)
 
 If we fit an OLS regression (Y = Beta0 + X Beta1 + error) using data generated from the causal diagram above, we would have a biased estimated of beta1. This is because X and the error term are correlated as the Z variable influences both. 
 
@@ -98,6 +98,6 @@ So, the question boils down to: how do we correct this bias.
 
 In the paper, they employ causal graphical models to correct for this bias. A brief summary of CGM is provided below. 
 
-![endo](https://i.imgur.com/vbq36FX.png)
+
 
 We can see that x, y, z
