@@ -12,24 +12,25 @@ categories: mmm causality
 
 ## Overview
 
-This paper looks at the problems with endogeneity in media mix modeling and specifically with paid search. 
+(in-progress)
 
-**Endogeneity:** Is a term often used and econometrics and refers to with an explantory variable is correlated with the error term. Put differently, endogeneity is when the independent variables (assumed to be exogenous in OLS) as actually correlated and impacting each other. 
+This paper looks at the problem of endogeneity in media mix modeling (MMM), specifically with paid search. 
 
-This paper uses Pearl back-door criteria to control for bias. 
+**Endogeneity:** This term is used in econometrics and refers to an explanatory variable that is correlated with the error term. Put differently, endogeneity is when the independent variables (assumed to be exogenous in OLS) are actually correlated and impacting each other.  
 
-In MMM, endogeneity is a particular problem becuase ad targeting and spend are driven by a common underlying cause i.e. demand. For example, a customer may only visit a website if they are interested in a product and visitng that website may activate ad retargeting. Therefore, underlying customer demand is a confounding variable if not accounted for when measuring ad effectivness. 
+This paper uses Pearl's back-door criteria to control for the bias that arised from endogeneity.
+
+In MMM, endogeneity is a particular problem because ad-targeting and spend are driven by a common underlying cause i.e. demand. For example, a customer may only visit a website if they are interested in a product and visiting that website may activate ad retargeting. Therefore, consumer demand is an unobserved variable driving both the sale and retargeting. 
 
 ### Pearl's Causal Theory
 
-A brief overview of Pearl's causal theory is provided. 
+To continue we briefly summarize Pearl's causal thoery. 
 
-The overarching idea behind Pearl's causal theory is the use of graphical models. The use of graphical models has several benefits:
+The overarching idea behind Pearl's causal theory is the use of graphical models, which allow us to encode causal relationships and encode the data generating process. Additionally, it allows us to test for conditional independence between variables using d-separation.
 
-1. Use domain knowledge to encode causal effects.
-2. Allows us to test for conditionl independence between variables using d-seperation.
+Below, are some useful definitions: 
 
-**D-Seperation**: A path between two nodes in a graph is considered to be d(directed)-seperated by another set of variables Z if either of the following criteria are meant:
+**D-Separation**: A path between two nodes in a graph is considered to be d(directed)-seperated by another set of variables Z if either of the following criteria are meant:
 
 1. The path contains a chain or a fork: x -> z -> y or x <- z -> y.
 2. The contains an inverted fork: x -> zz <- y where z is not in zz nor in any of its descendants. 
@@ -44,7 +45,7 @@ Below, we look at an example:
 
 ![endo](https://i.imgur.com/6TvRq0P.png)
 
-If we fit an OLS regression (Y = Beta0 + X Beta1 + error) using data generated from the causal diagram above, we would have a biased estimated of beta1. This is because X and the error term are correlated as the Z variable influences both. 
+If we fit an OLS regression (Y = Beta_0 + X Beta_1 + error) using data generated from the causal diagram above, we would have a biased estimate of Beta_1. This is because X and the error term are correlated as the Z variable influences X and the impact on Y is absorbed by the error term. 
 
 Rewriting the equations:
 
