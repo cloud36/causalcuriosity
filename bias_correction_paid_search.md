@@ -57,7 +57,7 @@ e.g.  sales = baseline + beta_1 * search_spend + error_organic_seasrch + error_a
 
 Below, we depict this in a causal diagram. 
 
-[!search_diagram](https://i.imgur.com/OoTJFcs.png)
+![search_diagram](https://i.imgur.com/OoTJFcs.png)
 
 Above, we can see Search Queries V effects both beta_1 * search_spend and error_1. To control for this, we examine the graph to see if there is a set of variables that satisfies Pearl's back-door criteria. 
 
