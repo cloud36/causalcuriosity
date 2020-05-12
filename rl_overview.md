@@ -22,11 +22,16 @@ EQUATION
 * Markov Decision Process (MDP)
 * Reward
 * Bellmans Equations
-* Monte Carlo Estimation
-* Q-Learning
 * Function Approixmators
 * On-Policy versus Off-Policy Learning
 * The Deadly Triad
+
+### Methods
+* Monte Carlo Estimation
+* Q-Learning
+* TD-Lambda
+* Dyno
+* DQN
 
 ### Applications
 * Games
@@ -34,6 +39,5 @@ EQUATION
 * Finance
 * Self-Driving Cars
 
-### Thoughts 
+### Resources 
 
-Limited applicatioin to real world problems. 
