@@ -39,6 +39,6 @@ Reinforcement learning can be summarized as an agent optimizing it's actions to 
 * Self-Driving Cars
 
 ### Resources 
-![Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
-![RL Course by David Silver](https://www.youtube.com/watch?v=2pWv7GOvuf0)
-![Deep Reinforcement Learning: Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893)
+[Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
+[RL Course by David Silver](https://www.youtube.com/watch?v=2pWv7GOvuf0)
+[Deep Reinforcement Learning: Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893)
